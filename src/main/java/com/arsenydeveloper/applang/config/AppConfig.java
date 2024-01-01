@@ -10,16 +10,16 @@ import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 
-// @Configuration
-// public class AppConfig {
+@Configuration
+public class AppConfig {
 
-//     @Bean
-//     public ModelMapper modelMapper() {
-//         return new ModelMapper();
-//     }
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
+    }
 
-//     @Bean
-//     public UUtils uUtils(ModelMapper modelMapper) {
-//         return new UUtils(modelMapper);
-//     }
-// }
+    @Bean
+    public UUtils uUtils(ModelMapper modelMapper) {
+        return new UUtils(modelMapper);
+    }
+}
