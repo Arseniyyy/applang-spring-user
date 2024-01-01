@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### dotfiles ###
+.vim
+
+### .properties files ###
+src/main/resources/datasource.properties
