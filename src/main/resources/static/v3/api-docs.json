@@ -1,0 +1,209 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "U Service API",
+    "description": "A service for managing `U` (user) instances.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080/api/v1/",
+      "description": "Localhost server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "main",
+      "description": "Main operations"
+    }
+  ],
+  "paths": {
+    "/u": {
+      "get": {
+        "tags": [
+          "main"
+        ],
+        "summary": "Get all U instances",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": []
+              }
+            }
+          },
+          "404": {
+            "description": "desc"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "main"
+        ],
+        "summary": "Create a new U instance",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "email": "example@example.com",
+                "nickname": "ExampleUser",
+                "dateOfBirth": "1990-01-01",
+                "nativeLanguage": "English",
+                "subscription": "Free",
+                "registrationMethod": "Email",
+                "isActive": true,
+                "verificationCode": "ABC123",
+                "words": [
+                  "c2d5b7e8-b7b9-4fb4-8248-39904ccce3b7"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "U instance created successfully",
+            "content": {
+              "application/json": {
+                "example": {
+                  "id": "f1251a28-50e8-4f74-878e-ac6db1b1591a",
+                  "email": "example@example.com",
+                  "nickname": "ExampleUser",
+                  "dateOfBirth": "1990-01-01",
+                  "nativeLanguage": "english",
+                  "subscription": "free",
+                  "registrationMethod": "email",
+                  "isActive": true,
+                  "verificationCode": "ABC123",
+                  "words": [
+                    "c2d5b7e8-b7b9-4fb4-8248-39904ccce3b7"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "U instance not created, invalid request body provided"
+          }
+        }
+      }
+    },
+    "/u/{id}": {
+      "get": {
+        "tags": [
+          "main"
+        ],
+        "summary": "Get a specific U instance by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": 123
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "U instance retrieved successfully",
+            "content": {
+              "application/json": {
+                "example": {
+                  "id": 123,
+                  "email": "example@example.com",
+                  "nickname": "ExampleUser",
+                  "dateOfBirth": "1990-01-01",
+                  "nativeLanguage": "English",
+                  "subscription": "Free",
+                  "registrationMethod": "Email",
+                  "isActive": true,
+                  "verificationCode": "ABC123",
+                  "words": [
+                    "c2d5b7e8-b7b9-4fb4-8248-39904ccce3b7"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "main"
+        ],
+        "summary": "Partially update a specific U instance by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": 123
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "example": {
+                "nickname": "UpdatedUser"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "U instance updated successfully",
+            "content": {
+              "application/json": {
+                "example": {
+                  "id": "f1251a28-50e8-4f74-878e-ac6db1b1591a",
+                  "email": "example@example.com",
+                  "nickname": "UpdatedUser",
+                  "dateOfBirth": "1990-01-01",
+                  "nativeLanguage": "English",
+                  "subscription": "Free",
+                  "registrationMethod": "Email",
+                  "isActive": true,
+                  "verificationCode": "ABC123",
+                  "words": [
+                    "c2d5b7e8-b7b9-4fb4-8248-39904ccce3b7"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "main"
+        ],
+        "summary": "Delete a specific U instance by ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": 123
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "U instance deleted successfully"
+          }
+        }
+      }
+    }
+  }
+}
