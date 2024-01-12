@@ -2,6 +2,7 @@ package com.arsenydeveloper.applang.user.model;
 
 import java.util.Set;
 import java.util.UUID;
+
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -12,6 +13,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Email;
 
 /**
  * Entity, representing <code>U</code> (user).
@@ -27,49 +31,42 @@ public class U {
     @Column(name = "id", unique = true, nullable = false)
     private UUID id;
 
-    @Column(name = "email", unique = true, nullable = false)
+    @Email
     private String email;
 
+    @NotEmpty
     @Column(name = "nickname", unique = true, nullable = false, length = 255)
     private String nickname;
 
     @Column(name = "date_of_birth", nullable = false)
+    @Past
     private LocalDate dateOfBirth;
 
     @Transient
     private Integer age;
 
+    @NotEmpty
     @Column(name = "native_language", nullable = false)
     private String nativeLanguage;
 
+    @NotEmpty
     @Column(name = "subscription", nullable = false)
     private String subscription;
 
+    @NotEmpty
     @Column(name = "registrationMethod", nullable = false)
     private String registrationMethod;
 
     @Column(name = "isActive", nullable = false)
     private boolean isActive;
 
+    @NotEmpty
     @Column(name = "verificationCode", length = 6, nullable = false)
     private String verificationCode;
 
     private Set<UUID> words;
 
     public U() {
-    }
-
-    public U(String email, String nickname, LocalDate dateOfBirth, String nativeLanguage, String subscription,
-            String registrationMethod, boolean isActive, String verificationCode, Set<UUID> words) {
-        this.email = email;
-        this.nickname = nickname;
-        this.dateOfBirth = dateOfBirth;
-        this.nativeLanguage = nativeLanguage;
-        this.subscription = subscription;
-        this.registrationMethod = registrationMethod;
-        this.isActive = isActive;
-        this.verificationCode = verificationCode;
-        this.words = words;
     }
 
     @Override
@@ -102,6 +99,7 @@ public class U {
     }
 
     public LocalDate getDateOfBirth() {
+        System.out.println(dateOfBirth);
         return dateOfBirth;
     }
 

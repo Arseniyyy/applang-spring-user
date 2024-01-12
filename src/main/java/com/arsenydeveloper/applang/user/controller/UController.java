@@ -3,11 +3,13 @@ package com.arsenydeveloper.applang.user.controller;
 import java.util.List;
 import java.util.UUID;
 import java.util.Map;
+import jakarta.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,15 +23,18 @@ import org.springframework.http.MediaType;
 import com.arsenydeveloper.applang.user.model.U;
 import com.arsenydeveloper.applang.user.model.dto.UDTO;
 import com.arsenydeveloper.applang.user.service.UService;
+import com.arsenydeveloper.applang.user.util.UUtils;
+import com.arsenydeveloper.applang.common.error.dto.ErrorUDTO;
+import com.arsenydeveloper.applang.common.error.util.ErrorResponse;
 
 /**
- * <code>RestController</code> for making requests to the `/u` endpoint.
+ * {@code RestController} for making requests to the `/u` endpoint.
  * @author Arseniy Koshelnik
  * @since 0.0.1
  */
 @RestController
 @RequestMapping(path = "${info.api.u-url}")
-public class UController {
+class UController {
 
     private final UService uService;
     private final UUtils uUtils;
@@ -74,7 +79,12 @@ public class UController {
         consumes = { MediaType.APPLICATION_JSON_VALUE },
         produces = { MediaType.APPLICATION_JSON_VALUE }
     )
-    private ResponseEntity<UDTO> createU(@RequestBody U requestBody) {
+    private ResponseEntity<?> createU(@RequestBody @Valid U requestBody, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            ErrorUDTO errorUDTO = ErrorResponse.badRequest(bindingResult);
+
+            return ResponseEntity.badRequest().body(errorUDTO);
+        }
         U createdEntity = uService.create(requestBody);
         UDTO uDTO =  uUtils.convertToDTO(createdEntity);
 

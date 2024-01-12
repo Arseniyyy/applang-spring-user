@@ -1,10 +1,11 @@
-package com.arsenydeveloper.applang.user.controller;
+package com.arsenydeveloper.applang.user.util;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.arsenydeveloper.applang.user.model.U;
 import com.arsenydeveloper.applang.user.model.dto.UDTO;
@@ -12,6 +13,7 @@ import com.arsenydeveloper.applang.user.model.dto.UDTO;
 /**
  * UUtils
  */
+@Component
 public class UUtils {
 
     private final ModelMapper modelMapper;
