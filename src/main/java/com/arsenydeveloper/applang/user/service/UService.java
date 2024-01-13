@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
 
-import com.arsenydeveloper.applang.user.model.U;
+import com.arsenydeveloper.applang.user.persistence.U;
 import com.arsenydeveloper.applang.user.repository.URepository;
 
 /**
@@ -32,7 +32,7 @@ public class UService {
     }
 
     /**
-     * Fetch all <code>U</code> instances from the database.
+     * Fetch all {@code U} instances from the database.
      */
     public List<U> findAll() {
         return uRepository.findAll();
@@ -41,22 +41,18 @@ public class UService {
     public U findSpecific(UUID id) {
         Optional<U> u = uRepository.findById(id);
 
-        if (!u.isPresent()) {
-            throw new IllegalStateException(NO_USER_FOUND_ERROR_MESSAGE);
-        }
-
         return u.get();
     }
 
     /**
-     * Fetch a single <code>U</code> instance by the provided email.
+     * Fetch a single {@code U} instance by the provided email.
      */
     public Optional<U> findByEmail(String email) {
         return uRepository.findByEmail(email);
     }
 
     /**
-     * Create a <code>U</code> instance.
+     * Create a {@code U} instance.
      */
     public U create(U u) throws IllegalStateException {
         Optional<U> uOptional = uRepository.findByEmail(u.getEmail());
@@ -69,7 +65,7 @@ public class UService {
     }
 
     /**
-     * Partially update a <code>U</code> instance.
+     * Partially update a {@code U} instance.
      */
     public U partialUpdate(UUID id, Map<String, Object> fields) throws IllegalStateException {
         Optional<U> uOptional = uRepository.findById(id);
@@ -85,25 +81,24 @@ public class UService {
             return save(uExisting);
         }
 
-        throw new IllegalStateException(NO_USER_FOUND_ERROR_MESSAGE);
-
+        return uOptional.get();
     }
 
     /**
-     * Delete a <code>U</code> instance.
+     * Delete a {@code U} instance.
      */
     public void delete(UUID id) {
-        Optional<U> u = uRepository.findById(id);
+        Optional<U> uOptional = uRepository.findById(id);
 
-        if (u.isPresent()) {
+        if (uOptional.isPresent()) {
             uRepository.deleteById(id);
             return;
         }
-        throw new IllegalStateException(NO_USER_FOUND_ERROR_MESSAGE);
+        uOptional.get();
     }
 
     /**
-     * Save a <code>U</code> instance in the database.
+     * Save a {@code U} instance in the database.
      */
     private U save(U u) {
         return uRepository.save(u);

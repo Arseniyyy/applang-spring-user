@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.arsenydeveloper.applang.user.model.U;
+import com.arsenydeveloper.applang.user.persistence.U;
 
 @Repository
 public interface URepository extends JpaRepository<U, UUID> {

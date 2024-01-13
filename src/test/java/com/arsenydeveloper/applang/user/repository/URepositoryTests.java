@@ -8,7 +8,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.arsenydeveloper.applang.user.model.U;
+import com.arsenydeveloper.applang.user.persistence.U;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
