@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import com.arsenydeveloper.applang.user.util.UUtils;
 
 @Configuration
-public class AppConfig {
+public class AppConfiguration {
 
     @Bean
     public ModelMapper modelMapper() {
