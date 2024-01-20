@@ -3,20 +3,21 @@ package com.arsenydeveloper.applang.config;
 import java.util.NoSuchElementException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.ResponseEntity;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
-import com.arsenydeveloper.applang.common.error.validation.dto.NoResourceFoundExceptionDTO;
-import com.arsenydeveloper.applang.common.error.validation.dto.NoSuchElementExceptionDTO;
+import com.arsenydeveloper.applang.common.error.notfound.dto.NoResourceFoundExceptionDTO;
+import com.arsenydeveloper.applang.common.error.notfound.dto.NoSuchElementExceptionDTO;
 import com.arsenydeveloper.applang.common.error.validation.dto.MethodArgumentNotValidExceptionDTO;
 import com.arsenydeveloper.applang.common.error.validation.dto.MethodArgumentTypeMismatchExceptionDTO;
-import com.arsenydeveloper.applang.common.error.validation.response.NoResourceFoundExceptionResponseEntity;
+import com.arsenydeveloper.applang.common.error.notfound.response.NoResourceFoundExceptionResponseEntity;
 import com.arsenydeveloper.applang.common.error.validation.response.MethodArgumentNotValidExceptionResponseEntity;
 import com.arsenydeveloper.applang.common.error.validation.response.MethodArgumentTypeMismatchExceptionResponseEntity;
-import com.arsenydeveloper.applang.common.error.validation.response.NoSuchElementExceptionResponseEntity;
+import com.arsenydeveloper.applang.common.error.notfound.response.NoSuchElementExceptionResponseEntity;
 
 /**
  * GlobalExceptionHandler
@@ -37,18 +38,31 @@ public class GlobalExceptionHandler {
     }
 
     /**
+     * Handle {@code NoSuchElementException}
+     * @param noSuchElementException An instance of {@code NoSuchElementException}
+     * @param request An instance of {@code HttpServletRequest}
+     */
+    @ExceptionHandler(NoSuchElementException.class)
+    public ResponseEntity<NoSuchElementExceptionDTO> handleNoSuchElementException(NoSuchElementException noSuchElementException, HttpServletRequest request) {
+        NoSuchElementExceptionDTO noSuchElementExceptionDTO = NoSuchElementExceptionResponseEntity.notFound(noSuchElementException, request);
+
+        return new ResponseEntity<>(noSuchElementExceptionDTO, HttpStatus.NOT_FOUND);
+    }
+
+    /**
      * Handle {@code MethodArgumentNotValidException}
-     * @param methodArgumentNotValidException instance of {@code MethodArgumentNotValidException}
+     * @param exception instance of {@code MethodArgumentNotValidException}
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<MethodArgumentNotValidExceptionDTO> handleMethodArgumentNotValidException(
             MethodArgumentNotValidException methodArgumentNotValidException,
             HttpServletRequest request
     ) {
-        MethodArgumentNotValidExceptionDTO badRequestBodyErrorDTO = MethodArgumentNotValidExceptionResponseEntity.badRequest(
-                methodArgumentNotValidException, request);
+        System.out.println("OUTPUT: " + methodArgumentNotValidException.getFieldError().getField());
+        MethodArgumentNotValidExceptionDTO methodArgumentNotValidExceptionDTO =
+            MethodArgumentNotValidExceptionResponseEntity.badRequest(methodArgumentNotValidException, request);
 
-        return ResponseEntity.badRequest().body(badRequestBodyErrorDTO);
+        return ResponseEntity.badRequest().body(methodArgumentNotValidExceptionDTO);
     }
 
     /**
@@ -62,17 +76,9 @@ public class GlobalExceptionHandler {
     {
         MethodArgumentTypeMismatchExceptionDTO methodArgumentTypeMismatchExceptionDTO = MethodArgumentTypeMismatchExceptionResponseEntity.badRequest(
                 methodArgumentTypeMismatchException, request);
+
         return ResponseEntity.badRequest().body(methodArgumentTypeMismatchExceptionDTO);
     }
 
-    /**
-     * Handle {@code NoSuchElementException}
-     * @param noSuchElementException An instance of {@code NoSuchElementException}
-     * @param request An instance of {@code HttpServletRequest}
-     */
-    @ExceptionHandler(NoSuchElementException.class)
-    public ResponseEntity<NoSuchElementExceptionDTO> handleNoSuchElementException(NoSuchElementException noSuchElementException, HttpServletRequest request) {
-        NoSuchElementExceptionDTO noSuchElementExceptionDTO = NoSuchElementExceptionResponseEntity.notFound(noSuchElementException, request);
-        return new ResponseEntity<>(noSuchElementExceptionDTO, HttpStatus.NOT_FOUND);
-    }
+    // Less specific errors
 }

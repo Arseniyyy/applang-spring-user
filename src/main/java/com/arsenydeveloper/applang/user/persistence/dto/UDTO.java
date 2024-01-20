@@ -3,18 +3,44 @@ package com.arsenydeveloper.applang.user.persistence.dto;
 import java.util.Set;
 import java.util.UUID;
 import java.time.LocalDate;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Column;
+import jakarta.persistence.GenerationType;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Past;
 
 public class UDTO {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "id", unique = true)
     private UUID id;
+
+    @Email
     private String email;
+
+    @NotEmpty
     private String nickname;
+
+    @Past
     private LocalDate dateOfBirth;
+
     private Integer age;
+
+    @NotEmpty
     private String nativeLanguage;
+
+    @NotEmpty
     private String subscription;
+
+    @NotEmpty
     private String registrationMethod;
-    private boolean isActive;
+
+    private boolean enabled;
+
+    @NotEmpty
     private String verificationCode;
     private Set<UUID> words;
 
@@ -79,12 +105,12 @@ public class UDTO {
         this.registrationMethod = registrationMethod;
     }
 
-    public boolean isActive() {
-        return isActive;
+    public boolean isEnabled() {
+        return enabled;
     }
 
-    public void setActive(boolean active) {
-        isActive = active;
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public String getVerificationCode() {

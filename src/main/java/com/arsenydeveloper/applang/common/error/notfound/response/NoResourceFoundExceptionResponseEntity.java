@@ -1,9 +1,9 @@
-package com.arsenydeveloper.applang.common.error.validation.response;
+package com.arsenydeveloper.applang.common.error.notfound.response;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 import com.arsenydeveloper.applang.common.error.util.ErrorStatusCode;
-import com.arsenydeveloper.applang.common.error.validation.dto.NoResourceFoundExceptionDTO;
+import com.arsenydeveloper.applang.common.error.notfound.dto.NoResourceFoundExceptionDTO;
 
 public class NoResourceFoundExceptionResponseEntity {
 

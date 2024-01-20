@@ -11,6 +11,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.validation.constraints.Past;
@@ -18,7 +19,7 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Email;
 
 /**
- * Entity, representing <code>U</code> (user).
+ * Entity, representing {@code U} (a user).
  * @author Arseniy Koshelnik
  * @since 0.0.1
  */
@@ -28,17 +29,17 @@ public class U {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id", unique = true, nullable = false)
+    @Column(name = "id", unique = true)
     private UUID id;
 
     @Email
     private String email;
 
     @NotEmpty
-    @Column(name = "nickname", unique = true, nullable = false, length = 255)
+    @Column(name = "nickname", unique = true, length = 255)
     private String nickname;
 
-    @Column(name = "date_of_birth", nullable = false)
+    @Column(name = "date_of_birth")
     @Past
     private LocalDate dateOfBirth;
 
@@ -46,27 +47,34 @@ public class U {
     private Integer age;
 
     @NotEmpty
-    @Column(name = "native_language", nullable = false)
+    @Column(name = "native_language")
     private String nativeLanguage;
 
     @NotEmpty
-    @Column(name = "subscription", nullable = false)
+    @Column(name = "subscription")
     private String subscription;
 
     @NotEmpty
-    @Column(name = "registrationMethod", nullable = false)
+    @Column(name = "registrationMethod")
     private String registrationMethod;
 
-    @Column(name = "isActive", nullable = false)
-    private boolean isActive;
+    @Column(name = "enabled")
+    private boolean enabled;
 
     @NotEmpty
-    @Column(name = "verificationCode", length = 6, nullable = false)
+    @Column(name = "verificationCode", length = 6)
     private String verificationCode;
 
     private Set<UUID> words;
 
     public U() {
+        super();
+        this.enabled = false;
+    }
+
+    @PrePersist
+    private void prePersist() {
+        this.enabled = false;
     }
 
     @Override
@@ -99,7 +107,6 @@ public class U {
     }
 
     public LocalDate getDateOfBirth() {
-        System.out.println(dateOfBirth);
         return dateOfBirth;
     }
 
@@ -107,9 +114,6 @@ public class U {
         this.dateOfBirth = dateOfBirth;
     }
 
-    /**
-     * Count the {@code age} property of a {@code U} instance.
-     */
     public Integer getAge() {
         return Period.between(this.dateOfBirth, LocalDate.now()).getYears();
     }
@@ -142,12 +146,12 @@ public class U {
         this.registrationMethod = registrationMethod;
     }
 
-    public boolean getIsActive() {
-        return isActive;
+    public boolean isEnabled() {
+        return enabled;
     }
 
-    public void setIsActive(boolean isActive) {
-        this.isActive = isActive;
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
     public String getVerificationCode() {

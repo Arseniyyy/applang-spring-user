@@ -7,26 +7,26 @@ package com.arsenydeveloper.applang.common.error.validation.dto;
  */
 public class MethodArgumentNotValidExceptionDTO {
 
-    private String target;
+    private String field;
     private String defaultMessage;
     private int statusCode;
     private String path;
 
     /**
      * Constructs an ErrorUDTO with the specified error message and status code.
-     * @param target The request body field where the exception has happened
+     * @param field The request body field where the exception has happened
      * @param defaultMessage The error message to be associated with the error.
      * @param statusCode   The HTTP status code to be associated with the error.
      */
-    public MethodArgumentNotValidExceptionDTO(String target, String defaultMessage, int statusCode, String path) {
-        this.target = target;
+    public MethodArgumentNotValidExceptionDTO(String field, String defaultMessage, int statusCode, String path) {
+        this.field = field;
         this.defaultMessage = defaultMessage;
         this.statusCode = statusCode;
         this.path = path;
     }
 
-    public String getTarget() {
-        return target;
+    public String getField() {
+        return field;
     }
 
     public String getDefaultMessage() {

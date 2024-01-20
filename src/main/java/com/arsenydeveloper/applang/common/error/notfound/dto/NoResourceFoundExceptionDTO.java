@@ -1,4 +1,4 @@
-package com.arsenydeveloper.applang.common.error.validation.dto;
+package com.arsenydeveloper.applang.common.error.notfound.dto;
 
 public class NoResourceFoundExceptionDTO {
 

@@ -18,14 +18,12 @@ public class MethodArgumentNotValidExceptionResponseEntity {
      * @return {@code MethodArgumentNotValidExceptionDTO} ResponseEntity instance that accepts MethodArgumentNotValidExceptionDTO as a type
      */
     public static MethodArgumentNotValidExceptionDTO badRequest(MethodArgumentNotValidException methodArgumentNotValidException, HttpServletRequest request) {
-        String target = getTarget(methodArgumentNotValidException);
+        String field = getField(methodArgumentNotValidException);
         String errorMessage = getDefaultMessage(methodArgumentNotValidException);
         String path = getPath(request);
 
-        MethodArgumentNotValidExceptionDTO badRequestBodyErrorDTO = new MethodArgumentNotValidExceptionDTO(
-                target, errorMessage, ErrorStatusCode.BAD_REQUEST_400, path);
-
-        return badRequestBodyErrorDTO;
+        return new MethodArgumentNotValidExceptionDTO(
+                field, errorMessage, ErrorStatusCode.BAD_REQUEST_400, path);
     }
 
     /**
@@ -33,8 +31,8 @@ public class MethodArgumentNotValidExceptionResponseEntity {
      * @param constraintViolation ConstraintViolation instance
      * @return {@code String} name of the field
      */
-    private static String getTarget(MethodArgumentNotValidException methodArgumentNotValidException) {
-        return methodArgumentNotValidException.getTarget().toString();
+    private static String getField(MethodArgumentNotValidException methodArgumentNotValidException) {
+        return methodArgumentNotValidException.getFieldError().getField();
     }
 
     /**

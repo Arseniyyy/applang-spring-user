@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.Map;
 import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
@@ -28,7 +29,7 @@ import com.arsenydeveloper.applang.user.util.UUtils;
  * @since 0.0.1
  */
 @RestController
-@RequestMapping(path = "/")
+@RequestMapping
 class UController {
 
     private final UService uService;
@@ -40,39 +41,28 @@ class UController {
         this.uUtils = uUtils;
     }
 
-    /**
-     * Get all {@code U} instances.
-     */
     @GetMapping(
         value = "${info.api.u-url}",
         produces = { MediaType.APPLICATION_JSON_VALUE }
     )
-    private List<UDTO> getAllU() {
+    private ResponseEntity<List<UDTO>> getAllU() {
         List<U> us = uService.findAll();
-        List<UDTO> dtos = uUtils.convertToDTOMultiple(us);
+        List<UDTO> uDTOs = uUtils.convertToDTOMultiple(us);
 
-        return dtos;
+        return ResponseEntity.ok().body(uDTOs);
     }
 
-    /**
-     * Get a specific {@code U} instance.
-     * @param id UUID of a specific U instance
-     */
     @GetMapping(
         value = "${info.api.u-url}/{id}",
         produces = { MediaType.APPLICATION_JSON_VALUE }
     )
-    private UDTO getSpecificU(@PathVariable UUID id) {
-        U u = uService.findSpecific(id);
+    private ResponseEntity<UDTO> getSpecificU(@PathVariable UUID id) {
+        U u = uService.findById(id);
         UDTO udto = uUtils.convertToDTO(u);
 
-        return udto;
+        return ResponseEntity.ok().body(udto);
     }
 
-    /**
-     * Post a {@code U} instance.
-     * @param requestBody Request body
-     */
     @PostMapping(
         value = "${info.api.u-url}",
         consumes = { MediaType.APPLICATION_JSON_VALUE },
@@ -85,9 +75,6 @@ class UController {
         return new ResponseEntity<>(uDTO, HttpStatus.CREATED);
     }
 
-    /**
-     * Patch a {@code U} instance.
-     */
     @PatchMapping(
         value = "${info.api.u-url}/{id}",
         consumes = { MediaType.APPLICATION_JSON_VALUE },
@@ -97,19 +84,15 @@ class UController {
         U updatedEntity = uService.partialUpdate(id, fields);
         UDTO uDTO = uUtils.convertToDTO(updatedEntity);
 
-        return new ResponseEntity<>(uDTO, HttpStatus.OK);
+        return ResponseEntity.ok().body(uDTO);
     }
 
-    /**
-     * Delete a {@code U} instance.
-     * @param id UUID of a specific U instance
-     */
     @DeleteMapping(
         value = "${info.api.u-url}/{id}"
     )
     private ResponseEntity<Void> deleteU(@PathVariable UUID id) {
         uService.delete(id);
 
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        return ResponseEntity.noContent().build();
     }
 }

@@ -23,7 +23,6 @@ import com.arsenydeveloper.applang.user.repository.URepository;
 public class UService {
 
     private final URepository uRepository;
-    private static final String NO_USER_FOUND_ERROR_MESSAGE = "No user found with provided id.";
     private static final String THIS_EMAIL_ALREADY_TAKEN_ERROR_MESSAGE = "This email already taken.";
 
     @Autowired
@@ -31,42 +30,30 @@ public class UService {
         this.uRepository = uRepository;
     }
 
-    /**
-     * Fetch all {@code U} instances from the database.
-     */
     public List<U> findAll() {
         return uRepository.findAll();
     }
 
-    public U findSpecific(UUID id) {
+    public U findById(UUID id) {
         Optional<U> u = uRepository.findById(id);
 
         return u.get();
     }
 
-    /**
-     * Fetch a single {@code U} instance by the provided email.
-     */
     public Optional<U> findByEmail(String email) {
         return uRepository.findByEmail(email);
     }
 
-    /**
-     * Create a {@code U} instance.
-     */
     public U create(U u) throws IllegalStateException {
-        Optional<U> uOptional = uRepository.findByEmail(u.getEmail());
+        // Optional<U> uOptional = uRepository.findByEmail(u.getEmail());
 
-        if (uOptional.isPresent()) {
-            throw new IllegalStateException(THIS_EMAIL_ALREADY_TAKEN_ERROR_MESSAGE);
-        }
+        // if (uOptional.isPresent()) {
+        //     throw new IllegalStateException(THIS_EMAIL_ALREADY_TAKEN_ERROR_MESSAGE);
+        // }
 
         return save(u);
     }
 
-    /**
-     * Partially update a {@code U} instance.
-     */
     public U partialUpdate(UUID id, Map<String, Object> fields) throws IllegalStateException {
         Optional<U> uOptional = uRepository.findById(id);
 
@@ -84,9 +71,6 @@ public class UService {
         return uOptional.get();
     }
 
-    /**
-     * Delete a {@code U} instance.
-     */
     public void delete(UUID id) {
         Optional<U> uOptional = uRepository.findById(id);
 
@@ -97,9 +81,6 @@ public class UService {
         uOptional.get();
     }
 
-    /**
-     * Save a {@code U} instance in the database.
-     */
     private U save(U u) {
         return uRepository.save(u);
     }

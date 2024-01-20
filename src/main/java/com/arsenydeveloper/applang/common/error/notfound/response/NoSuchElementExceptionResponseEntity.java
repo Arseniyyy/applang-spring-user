@@ -1,10 +1,10 @@
-package com.arsenydeveloper.applang.common.error.validation.response;
+package com.arsenydeveloper.applang.common.error.notfound.response;
 
 import java.util.NoSuchElementException;
 import jakarta.servlet.http.HttpServletRequest;
 
 import com.arsenydeveloper.applang.common.error.util.ErrorStatusCode;
-import com.arsenydeveloper.applang.common.error.validation.dto.NoSuchElementExceptionDTO;
+import com.arsenydeveloper.applang.common.error.notfound.dto.NoSuchElementExceptionDTO;
 
 public class NoSuchElementExceptionResponseEntity {
 
