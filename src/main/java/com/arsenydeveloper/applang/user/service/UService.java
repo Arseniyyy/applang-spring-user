@@ -20,10 +20,9 @@ import com.arsenydeveloper.applang.user.repository.URepository;
  * @since 0.0.1
  */
 @Service
-public class UService {
+public class UService implements IUService {
 
     private final URepository uRepository;
-    private static final String THIS_EMAIL_ALREADY_TAKEN_ERROR_MESSAGE = "This email already taken.";
 
     @Autowired
     public UService(URepository uRepository) {
@@ -45,12 +44,6 @@ public class UService {
     }
 
     public U create(U u) throws IllegalStateException {
-        // Optional<U> uOptional = uRepository.findByEmail(u.getEmail());
-
-        // if (uOptional.isPresent()) {
-        //     throw new IllegalStateException(THIS_EMAIL_ALREADY_TAKEN_ERROR_MESSAGE);
-        // }
-
         return save(u);
     }
 

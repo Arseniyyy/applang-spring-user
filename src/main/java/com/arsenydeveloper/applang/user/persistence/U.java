@@ -1,7 +1,10 @@
 package com.arsenydeveloper.applang.user.persistence;
 
+import java.util.Collection;
 import java.util.Set;
 import java.util.UUID;
+
+import com.arsenydeveloper.applang.user.persistence.role.Role;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -11,6 +14,9 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,7 +25,7 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Email;
 
 /**
- * Entity, representing {@code U} (a user).
+ * Entity, representing a user.
  * @author Arseniy Koshelnik
  * @since 0.0.1
  */
@@ -32,15 +38,21 @@ public class U {
     @Column(name = "id", unique = true)
     private UUID id;
 
+    @NotEmpty
     @Email
+    @Column(unique = true)
     private String email;
 
     @NotEmpty
     @Column(name = "nickname", unique = true, length = 255)
     private String nickname;
 
-    @Column(name = "date_of_birth")
+    @NotEmpty
+    @Column(name = "password", unique = true)
+    private String password;
+
     @Past
+    @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
 
     @Transient
@@ -64,6 +76,14 @@ public class U {
     @NotEmpty
     @Column(name = "verificationCode", length = 6)
     private String verificationCode;
+
+    @ManyToMany
+    @JoinTable(
+        name = "u_roles",
+        joinColumns = @JoinColumn(name = "u_id"),
+        inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Collection<Role> roles;
 
     private Set<UUID> words;
 
@@ -104,6 +124,14 @@ public class U {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public LocalDate getDateOfBirth() {

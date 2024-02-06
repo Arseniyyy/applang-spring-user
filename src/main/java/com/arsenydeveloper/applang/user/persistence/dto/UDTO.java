@@ -3,45 +3,31 @@ package com.arsenydeveloper.applang.user.persistence.dto;
 import java.util.Set;
 import java.util.UUID;
 import java.time.LocalDate;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Column;
-import jakarta.persistence.GenerationType;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Past;
 
 public class UDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id", unique = true)
     private UUID id;
 
-    @Email
     private String email;
 
-    @NotEmpty
     private String nickname;
 
-    @Past
+    private String password;
+
     private LocalDate dateOfBirth;
 
     private Integer age;
 
-    @NotEmpty
     private String nativeLanguage;
 
-    @NotEmpty
     private String subscription;
 
-    @NotEmpty
     private String registrationMethod;
 
     private boolean enabled;
 
-    @NotEmpty
     private String verificationCode;
+
     private Set<UUID> words;
 
     @Override
@@ -71,6 +57,14 @@ public class UDTO {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public LocalDate getDateOfBirth() {

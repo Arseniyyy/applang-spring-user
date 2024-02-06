@@ -3,7 +3,6 @@ package com.arsenydeveloper.applang.config;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Bean;
-
 import com.arsenydeveloper.applang.user.util.UUtils;
 
 @Configuration

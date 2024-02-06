@@ -12,24 +12,18 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 import com.arsenydeveloper.applang.common.error.notfound.dto.NoResourceFoundExceptionDTO;
 import com.arsenydeveloper.applang.common.error.notfound.dto.NoSuchElementExceptionDTO;
+import com.arsenydeveloper.applang.common.error.validation.dto.DataIntegrityViolationExceptionDTO;
 import com.arsenydeveloper.applang.common.error.validation.dto.MethodArgumentNotValidExceptionDTO;
 import com.arsenydeveloper.applang.common.error.validation.dto.MethodArgumentTypeMismatchExceptionDTO;
 import com.arsenydeveloper.applang.common.error.notfound.response.NoResourceFoundExceptionResponseEntity;
 import com.arsenydeveloper.applang.common.error.validation.response.MethodArgumentNotValidExceptionResponseEntity;
 import com.arsenydeveloper.applang.common.error.validation.response.MethodArgumentTypeMismatchExceptionResponseEntity;
 import com.arsenydeveloper.applang.common.error.notfound.response.NoSuchElementExceptionResponseEntity;
+import com.arsenydeveloper.applang.common.error.validation.response.DataIntegrityViolationExceptionResponseEntity;
 
-/**
- * GlobalExceptionHandler
- */
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    /**
-     * Handle {@code NoResourceFoundException}
-     * @param noResourceFoundException
-     * @return {@code ResponseEntity<NoResourceFoundException>}
-     */
     @ExceptionHandler(NoResourceFoundException.class)
     public ResponseEntity<NoResourceFoundExceptionDTO> handleNoResourceFoundException(NoResourceFoundException noResourceFoundException, HttpServletRequest request) {
         NoResourceFoundExceptionDTO noResourceFoundExceptionDTO = NoResourceFoundExceptionResponseEntity.notFound(noResourceFoundException, request);
@@ -37,11 +31,6 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(noResourceFoundExceptionDTO, HttpStatus.NOT_FOUND);
     }
 
-    /**
-     * Handle {@code NoSuchElementException}
-     * @param noSuchElementException An instance of {@code NoSuchElementException}
-     * @param request An instance of {@code HttpServletRequest}
-     */
     @ExceptionHandler(NoSuchElementException.class)
     public ResponseEntity<NoSuchElementExceptionDTO> handleNoSuchElementException(NoSuchElementException noSuchElementException, HttpServletRequest request) {
         NoSuchElementExceptionDTO noSuchElementExceptionDTO = NoSuchElementExceptionResponseEntity.notFound(noSuchElementException, request);
@@ -49,10 +38,6 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(noSuchElementExceptionDTO, HttpStatus.NOT_FOUND);
     }
 
-    /**
-     * Handle {@code MethodArgumentNotValidException}
-     * @param exception instance of {@code MethodArgumentNotValidException}
-     */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<MethodArgumentNotValidExceptionDTO> handleMethodArgumentNotValidException(
             MethodArgumentNotValidException methodArgumentNotValidException,
@@ -65,14 +50,11 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(methodArgumentNotValidExceptionDTO);
     }
 
-    /**
-     * Handle {@code MethodArgumentTypeMismatchException}
-     * @param methodArgumentTypeMismatchException MethodArgumentTypeMismatchException
-     */
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public ResponseEntity<MethodArgumentTypeMismatchExceptionDTO> handleMethodArgumentTypeMismatchException(
             MethodArgumentTypeMismatchException methodArgumentTypeMismatchException,
-            HttpServletRequest request)
+            HttpServletRequest request
+    )
     {
         MethodArgumentTypeMismatchExceptionDTO methodArgumentTypeMismatchExceptionDTO = MethodArgumentTypeMismatchExceptionResponseEntity.badRequest(
                 methodArgumentTypeMismatchException, request);
@@ -81,4 +63,15 @@ public class GlobalExceptionHandler {
     }
 
     // Less specific errors
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<DataIntegrityViolationExceptionDTO> handleDataIntegrityViolationException(
+        DataIntegrityViolationException dataIntegrityViolationException,
+        HttpServletRequest request
+    )
+    {
+        DataIntegrityViolationExceptionDTO dataIntegrityViolationExceptionDTO = DataIntegrityViolationExceptionResponseEntity.badRequest(
+                dataIntegrityViolationException, request);
+
+        return ResponseEntity.badRequest().body(dataIntegrityViolationExceptionDTO);
+    }
 }
