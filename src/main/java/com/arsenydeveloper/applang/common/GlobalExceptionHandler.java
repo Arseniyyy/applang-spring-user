@@ -1,12 +1,12 @@
-package com.arsenydeveloper.applang.config;
+package com.arsenydeveloper.applang.common;
 
 import java.util.NoSuchElementException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
@@ -21,7 +21,7 @@ import com.arsenydeveloper.applang.common.error.validation.response.MethodArgume
 import com.arsenydeveloper.applang.common.error.notfound.response.NoSuchElementExceptionResponseEntity;
 import com.arsenydeveloper.applang.common.error.validation.response.DataIntegrityViolationExceptionResponseEntity;
 
-@ControllerAdvice
+@RestControllerAdvice
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(NoResourceFoundException.class)
