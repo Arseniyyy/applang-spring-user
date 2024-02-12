@@ -19,6 +19,7 @@
 	</properties>
 
 	<dependencies>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -58,8 +59,8 @@
     </dependency>
 
     <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
     </dependency>
 
     <dependency>
@@ -113,17 +114,23 @@
       <version>8.0.1.Final</version>
     </dependency>
 
-    <dependency>
-      <groupId>com.nimbusds</groupId>
-      <artifactId>nimbus-jose-jwt</artifactId>
-      <version>9.37.3</version>
-    </dependency>
+    <!-- <dependency> -->
+    <!--   <groupId>com.nimbusds</groupId> -->
+    <!--   <artifactId>nimbus-jose-jwt</artifactId> -->
+    <!--   <version>9.37.3</version> -->
+    <!-- </dependency> -->
 
     <!-- <dependency> -->
     <!--   <groupId>com.atlassian.oai</groupId> -->
     <!--   <artifactId>swagger-request-validator-mockmvc</artifactId> -->
     <!--   <version>2.39.0</version> -->
     <!-- </dependency> -->
+
+    <dependency>
+      <groupId>com.okta.spring</groupId>
+      <artifactId>okta-spring-boot-starter</artifactId>
+      <version>3.0.6</version>
+    </dependency>
 
 
 	</dependencies>
@@ -135,6 +142,11 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+      <plugin>
+        <groupId>org.openrewrite.maven</groupId>
+        <artifactId>rewrite-maven-plugin</artifactId>
+        <version>5.22.0</version>
+      </plugin>
 		</plugins>
 	</build>
 

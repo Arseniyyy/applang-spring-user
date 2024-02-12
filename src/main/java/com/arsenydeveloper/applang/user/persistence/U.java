@@ -1,22 +1,14 @@
 package com.arsenydeveloper.applang.user.persistence;
 
-import java.util.Collection;
 import java.util.Set;
 import java.util.UUID;
-
-import com.arsenydeveloper.applang.user.persistence.role.Role;
-
 import java.time.LocalDate;
 import java.time.Period;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -76,14 +68,6 @@ public class U {
     @NotEmpty
     @Column(name = "verificationCode", length = 6)
     private String verificationCode;
-
-    @ManyToMany
-    @JoinTable(
-        name = "u_roles",
-        joinColumns = @JoinColumn(name = "u_id"),
-        inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
-    private Collection<Role> roles;
 
     private Set<UUID> words;
 

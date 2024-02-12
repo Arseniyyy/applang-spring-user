@@ -4,7 +4,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.Customizer;
@@ -26,9 +25,14 @@ import com.arsenydeveloper.applang.config.security.handler.CustomAccessDeniedHan
 @Configuration
 @EnableMethodSecurity
 @EnableWebSecurity
-@Profile("auth")
-@PropertySource("classpath:security.properties")
+@PropertySource("classpath:application.properties")
 public class SecurityConfig {
+
+    @Value("${okta.oauth2.issuer}")
+    private String issuer;
+
+    @Value("${okta.oauth2.audience}")
+    private String audience;
 
     @Bean
     public AccessDeniedHandler accessDeniedHandler() {
@@ -51,15 +55,20 @@ public class SecurityConfig {
                     corsCustomizer.configurationSource(corsConfig(allowedOrigins));
                 }
             })
+            .cors(AbstractHttpConfigurer::disable)
             .csrf(AbstractHttpConfigurer::disable)
             .sessionManagement(sessionManagementCustomizer -> sessionManagementCustomizer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            .authorizeHttpRequests(authz -> authz
-                    .anyRequest().authenticated())
+            .authorizeHttpRequests(authorize -> authorize
+                    .requestMatchers("/api/v1/u").authenticated()
+                    .requestMatchers("/api/v1/scope").hasAuthority("SCOPE_read:users")
+            )
             .oauth2ResourceServer(oauth2ResourceServerCustomizer -> oauth2ResourceServerCustomizer
-                    .jwt(Customizer.withDefaults()))
+                    .jwt(Customizer.withDefaults())
+            )
             .exceptionHandling(exceptionHandlingCustomizer -> exceptionHandlingCustomizer
                 .accessDeniedHandler(accessDeniedHandler())
-                .authenticationEntryPoint(authenticationEntryPoint()));
+                .authenticationEntryPoint(authenticationEntryPoint())
+            );
 
         return http.build();
     }
