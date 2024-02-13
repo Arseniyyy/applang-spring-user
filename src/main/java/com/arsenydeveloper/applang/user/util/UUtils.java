@@ -1,14 +1,12 @@
 package com.arsenydeveloper.applang.user.util;
 
+import com.arsenydeveloper.applang.user.persistence.U;
+import com.arsenydeveloper.applang.user.persistence.dto.UDTO;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import com.arsenydeveloper.applang.user.persistence.U;
-import com.arsenydeveloper.applang.user.persistence.dto.UDTO;
 
 /**
  * UUtils

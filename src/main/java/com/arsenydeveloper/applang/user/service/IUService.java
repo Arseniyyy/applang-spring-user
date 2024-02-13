@@ -1,11 +1,10 @@
 package com.arsenydeveloper.applang.user.service;
 
-import java.util.Optional;
+import com.arsenydeveloper.applang.user.persistence.U;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
-
-import com.arsenydeveloper.applang.user.persistence.U;
 
 /**
  * IUService

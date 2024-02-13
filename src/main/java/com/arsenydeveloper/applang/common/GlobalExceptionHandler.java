@@ -1,25 +1,25 @@
 package com.arsenydeveloper.applang.common;
 
-import java.util.NoSuchElementException;
-import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.http.ResponseEntity;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
-import org.springframework.web.servlet.resource.NoResourceFoundException;
 import com.arsenydeveloper.applang.common.error.notfound.dto.NoResourceFoundExceptionDTO;
 import com.arsenydeveloper.applang.common.error.notfound.dto.NoSuchElementExceptionDTO;
+import com.arsenydeveloper.applang.common.error.notfound.response.NoResourceFoundExceptionResponseEntity;
+import com.arsenydeveloper.applang.common.error.notfound.response.NoSuchElementExceptionResponseEntity;
 import com.arsenydeveloper.applang.common.error.validation.dto.DataIntegrityViolationExceptionDTO;
 import com.arsenydeveloper.applang.common.error.validation.dto.MethodArgumentNotValidExceptionDTO;
 import com.arsenydeveloper.applang.common.error.validation.dto.MethodArgumentTypeMismatchExceptionDTO;
-import com.arsenydeveloper.applang.common.error.notfound.response.NoResourceFoundExceptionResponseEntity;
+import com.arsenydeveloper.applang.common.error.validation.response.DataIntegrityViolationExceptionResponseEntity;
 import com.arsenydeveloper.applang.common.error.validation.response.MethodArgumentNotValidExceptionResponseEntity;
 import com.arsenydeveloper.applang.common.error.validation.response.MethodArgumentTypeMismatchExceptionResponseEntity;
-import com.arsenydeveloper.applang.common.error.notfound.response.NoSuchElementExceptionResponseEntity;
-import com.arsenydeveloper.applang.common.error.validation.response.DataIntegrityViolationExceptionResponseEntity;
+import jakarta.servlet.http.HttpServletRequest;
+import java.util.NoSuchElementException;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {

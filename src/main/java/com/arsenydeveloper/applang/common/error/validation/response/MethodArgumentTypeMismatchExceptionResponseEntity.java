@@ -1,11 +1,9 @@
 package com.arsenydeveloper.applang.common.error.validation.response;
 
-import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
-
 import com.arsenydeveloper.applang.common.error.util.ErrorStatusCode;
 import com.arsenydeveloper.applang.common.error.validation.dto.MethodArgumentTypeMismatchExceptionDTO;
-
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 public class MethodArgumentTypeMismatchExceptionResponseEntity {
 

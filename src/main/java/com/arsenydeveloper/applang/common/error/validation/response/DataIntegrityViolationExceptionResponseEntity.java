@@ -1,9 +1,9 @@
 package com.arsenydeveloper.applang.common.error.validation.response;
 
-import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.dao.DataIntegrityViolationException;
 import com.arsenydeveloper.applang.common.error.util.ErrorStatusCode;
 import com.arsenydeveloper.applang.common.error.validation.dto.DataIntegrityViolationExceptionDTO;
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.dao.DataIntegrityViolationException;
 
 
 public class DataIntegrityViolationExceptionResponseEntity {

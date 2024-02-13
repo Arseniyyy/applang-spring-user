@@ -1,20 +1,13 @@
 package com.arsenydeveloper.applang.user.persistence;
 
-import java.util.Set;
-import java.util.UUID;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Past;
 import java.time.LocalDate;
 import java.time.Period;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.validation.constraints.Past;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Email;
+import java.util.Set;
+import java.util.UUID;
 
 /**
  * Entity, representing a user.

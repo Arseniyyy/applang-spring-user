@@ -1,8 +1,8 @@
 package com.arsenydeveloper.applang.user.persistence.dto;
 
+import java.time.LocalDate;
 import java.util.Set;
 import java.util.UUID;
-import java.time.LocalDate;
 
 public class UDTO {
 

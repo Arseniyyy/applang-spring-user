@@ -1,17 +1,15 @@
 package com.arsenydeveloper.applang.user.service;
 
+import com.arsenydeveloper.applang.user.persistence.U;
+import com.arsenydeveloper.applang.user.repository.URepository;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
-
-import com.arsenydeveloper.applang.user.persistence.U;
-import com.arsenydeveloper.applang.user.repository.URepository;
 
 /**
  * Class used to act as a service layer that makes queries
