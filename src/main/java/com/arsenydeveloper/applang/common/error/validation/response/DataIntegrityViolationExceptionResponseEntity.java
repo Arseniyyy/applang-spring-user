@@ -1,14 +1,14 @@
 package com.arsenydeveloper.applang.common.error.validation.response;
 
 import com.arsenydeveloper.applang.common.error.util.ErrorStatusCode;
-import com.arsenydeveloper.applang.common.error.validation.dto.DataIntegrityViolationExceptionDTO;
+import com.arsenydeveloper.applang.common.error.validation.data.DataIntegrityViolationExceptionData;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.dao.DataIntegrityViolationException;
 
 
 public class DataIntegrityViolationExceptionResponseEntity {
 
-    public static DataIntegrityViolationExceptionDTO badRequest(
+    public static DataIntegrityViolationExceptionData badRequest(
         DataIntegrityViolationException dataIntegrityViolationException,
         HttpServletRequest request
     )
@@ -17,7 +17,7 @@ public class DataIntegrityViolationExceptionResponseEntity {
         String path = getPath(request);
         int statusCode = getStatusCode();
 
-        return new DataIntegrityViolationExceptionDTO(message, path, statusCode);
+        return new DataIntegrityViolationExceptionData(message, path, statusCode);
     }
 
     private static String getMessage(DataIntegrityViolationException dataIntegrityViolationException) {

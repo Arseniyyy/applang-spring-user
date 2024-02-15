@@ -61,7 +61,9 @@ public class SecurityConfig {
             .sessionManagement(sessionManagementCustomizer -> sessionManagementCustomizer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(authorize -> authorize
                     .requestMatchers(HttpMethod.POST, "/api/v1/u").permitAll()
-                    .requestMatchers("/api/v1/u").authenticated()
+                    .requestMatchers(HttpMethod.GET, "/api/v1/u").authenticated()
+                    .requestMatchers(HttpMethod.PATCH, "/api/v1/u/**").authenticated()
+                    .requestMatchers(HttpMethod.DELETE, "/api/v1/u/**").authenticated()
                     .requestMatchers("/api/v1/scope").hasAuthority("SCOPE_read:users")
             )
             .oauth2ResourceServer(oauth2ResourceServerCustomizer -> oauth2ResourceServerCustomizer

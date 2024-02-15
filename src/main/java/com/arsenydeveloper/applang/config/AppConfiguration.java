@@ -1,15 +1,12 @@
 package com.arsenydeveloper.applang.config;
 
-import com.arsenydeveloper.applang.user.util.UUtils;
+import com.arsenydeveloper.applang.util.UUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.util.UrlPathHelper;
 
 @Configuration
-public class AppConfiguration implements WebMvcConfigurer {
+public class AppConfiguration {
 
     @Bean
     public ModelMapper modelMapper() {

@@ -1,12 +1,12 @@
 package com.arsenydeveloper.applang.common;
 
-import com.arsenydeveloper.applang.common.error.notfound.dto.NoResourceFoundExceptionDTO;
-import com.arsenydeveloper.applang.common.error.notfound.dto.NoSuchElementExceptionDTO;
+import com.arsenydeveloper.applang.common.error.notfound.data.NoResourceFoundExceptionData;
+import com.arsenydeveloper.applang.common.error.notfound.data.NoSuchElementExceptionData;
 import com.arsenydeveloper.applang.common.error.notfound.response.NoResourceFoundExceptionResponseEntity;
 import com.arsenydeveloper.applang.common.error.notfound.response.NoSuchElementExceptionResponseEntity;
-import com.arsenydeveloper.applang.common.error.validation.dto.DataIntegrityViolationExceptionDTO;
-import com.arsenydeveloper.applang.common.error.validation.dto.MethodArgumentNotValidExceptionDTO;
-import com.arsenydeveloper.applang.common.error.validation.dto.MethodArgumentTypeMismatchExceptionDTO;
+import com.arsenydeveloper.applang.common.error.validation.data.DataIntegrityViolationExceptionData;
+import com.arsenydeveloper.applang.common.error.validation.data.MethodArgumentNotValidExceptionData;
+import com.arsenydeveloper.applang.common.error.validation.data.MethodArgumentTypeMismatchExceptionData;
 import com.arsenydeveloper.applang.common.error.validation.response.DataIntegrityViolationExceptionResponseEntity;
 import com.arsenydeveloper.applang.common.error.validation.response.MethodArgumentNotValidExceptionResponseEntity;
 import com.arsenydeveloper.applang.common.error.validation.response.MethodArgumentTypeMismatchExceptionResponseEntity;
@@ -25,53 +25,53 @@ import org.springframework.web.servlet.resource.NoResourceFoundException;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(NoResourceFoundException.class)
-    public ResponseEntity<NoResourceFoundExceptionDTO> handleNoResourceFoundException(NoResourceFoundException noResourceFoundException, HttpServletRequest request) {
-        NoResourceFoundExceptionDTO noResourceFoundExceptionDTO = NoResourceFoundExceptionResponseEntity.notFound(noResourceFoundException, request);
+    public ResponseEntity<NoResourceFoundExceptionData> handleNoResourceFoundException(NoResourceFoundException noResourceFoundException, HttpServletRequest request) {
+        NoResourceFoundExceptionData noResourceFoundExceptionData = NoResourceFoundExceptionResponseEntity.notFound(noResourceFoundException, request);
 
-        return new ResponseEntity<>(noResourceFoundExceptionDTO, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(noResourceFoundExceptionData, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(NoSuchElementException.class)
-    public ResponseEntity<NoSuchElementExceptionDTO> handleNoSuchElementException(NoSuchElementException noSuchElementException, HttpServletRequest request) {
-        NoSuchElementExceptionDTO noSuchElementExceptionDTO = NoSuchElementExceptionResponseEntity.notFound(noSuchElementException, request);
+    public ResponseEntity<NoSuchElementExceptionData> handleNoSuchElementException(NoSuchElementException noSuchElementException, HttpServletRequest request) {
+        NoSuchElementExceptionData noSuchElementExceptionData = NoSuchElementExceptionResponseEntity.notFound(noSuchElementException, request);
 
-        return new ResponseEntity<>(noSuchElementExceptionDTO, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(noSuchElementExceptionData, HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<MethodArgumentNotValidExceptionDTO> handleMethodArgumentNotValidException(
+    public ResponseEntity<MethodArgumentNotValidExceptionData> handleMethodArgumentNotValidException(
             MethodArgumentNotValidException methodArgumentNotValidException,
             HttpServletRequest request
     ) {
         System.out.println("OUTPUT: " + methodArgumentNotValidException.getFieldError().getField());
-        MethodArgumentNotValidExceptionDTO methodArgumentNotValidExceptionDTO =
+        MethodArgumentNotValidExceptionData methodArgumentNotValidExceptionData =
             MethodArgumentNotValidExceptionResponseEntity.badRequest(methodArgumentNotValidException, request);
 
-        return ResponseEntity.badRequest().body(methodArgumentNotValidExceptionDTO);
+        return ResponseEntity.badRequest().body(methodArgumentNotValidExceptionData);
     }
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
-    public ResponseEntity<MethodArgumentTypeMismatchExceptionDTO> handleMethodArgumentTypeMismatchException(
+    public ResponseEntity<MethodArgumentTypeMismatchExceptionData> handleMethodArgumentTypeMismatchException(
             MethodArgumentTypeMismatchException methodArgumentTypeMismatchException,
             HttpServletRequest request
     )
     {
-        MethodArgumentTypeMismatchExceptionDTO methodArgumentTypeMismatchExceptionDTO = MethodArgumentTypeMismatchExceptionResponseEntity.badRequest(
+        MethodArgumentTypeMismatchExceptionData methodArgumentTypeMismatchExceptionData = MethodArgumentTypeMismatchExceptionResponseEntity.badRequest(
                 methodArgumentTypeMismatchException, request);
 
-        return ResponseEntity.badRequest().body(methodArgumentTypeMismatchExceptionDTO);
+        return ResponseEntity.badRequest().body(methodArgumentTypeMismatchExceptionData);
     }
 
     // Less specific errors
     @ExceptionHandler(DataIntegrityViolationException.class)
-    public ResponseEntity<DataIntegrityViolationExceptionDTO> handleDataIntegrityViolationException(
+    public ResponseEntity<DataIntegrityViolationExceptionData> handleDataIntegrityViolationException(
         DataIntegrityViolationException dataIntegrityViolationException,
         HttpServletRequest request
     )
     {
-        DataIntegrityViolationExceptionDTO dataIntegrityViolationExceptionDTO = DataIntegrityViolationExceptionResponseEntity.badRequest(
+        DataIntegrityViolationExceptionData dataIntegrityViolationExceptionData = DataIntegrityViolationExceptionResponseEntity.badRequest(
                 dataIntegrityViolationException, request);
 
-        return ResponseEntity.badRequest().body(dataIntegrityViolationExceptionDTO);
+        return ResponseEntity.badRequest().body(dataIntegrityViolationExceptionData);
     }
 }

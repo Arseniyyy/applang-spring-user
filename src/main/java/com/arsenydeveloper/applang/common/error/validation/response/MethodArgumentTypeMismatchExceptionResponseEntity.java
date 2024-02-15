@@ -1,7 +1,7 @@
 package com.arsenydeveloper.applang.common.error.validation.response;
 
 import com.arsenydeveloper.applang.common.error.util.ErrorStatusCode;
-import com.arsenydeveloper.applang.common.error.validation.dto.MethodArgumentTypeMismatchExceptionDTO;
+import com.arsenydeveloper.applang.common.error.validation.data.MethodArgumentTypeMismatchExceptionData;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
@@ -11,13 +11,13 @@ public class MethodArgumentTypeMismatchExceptionResponseEntity {
      * @param methodArgumentNotValidException {@code MethodArgumentTypeMismatchException}
      * @return {@code MethodArgumentNotValidExceptionDTO}
      */
-    public static MethodArgumentTypeMismatchExceptionDTO badRequest(MethodArgumentTypeMismatchException methodArgumentNotValidException, HttpServletRequest request) {
+    public static MethodArgumentTypeMismatchExceptionData badRequest(MethodArgumentTypeMismatchException methodArgumentNotValidException, HttpServletRequest request) {
         String value = getValue(methodArgumentNotValidException);
         String name = getName(methodArgumentNotValidException);
         String message = getMessage(methodArgumentNotValidException);
         String path = getPath(request);
 
-        return new MethodArgumentTypeMismatchExceptionDTO(value, name, message, ErrorStatusCode.BAD_REQUEST_400, path);
+        return new MethodArgumentTypeMismatchExceptionData(value, name, message, ErrorStatusCode.BAD_REQUEST_400, path);
     }
 
     private static String getValue(MethodArgumentTypeMismatchException methodArgumentNotValidException) {

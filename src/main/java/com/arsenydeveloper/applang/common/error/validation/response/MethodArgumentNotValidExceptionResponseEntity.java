@@ -1,23 +1,23 @@
 package com.arsenydeveloper.applang.common.error.validation.response;
 
 import com.arsenydeveloper.applang.common.error.util.ErrorStatusCode;
-import com.arsenydeveloper.applang.common.error.validation.dto.MethodArgumentNotValidExceptionDTO;
+import com.arsenydeveloper.applang.common.error.validation.data.MethodArgumentNotValidExceptionData;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 
 /**
- * Return {@code MethodArgumentNotValidExceptionDTO} as a {@code ResponseEntity}
+ * Return {@code MethodArgumentNotValidExceptionData} as a {@code ResponseEntity}
  * @author Arseniy Koshelnik
  * @since 0.0.1
  */
 public class MethodArgumentNotValidExceptionResponseEntity {
 
-    public static MethodArgumentNotValidExceptionDTO badRequest(MethodArgumentNotValidException methodArgumentNotValidException, HttpServletRequest request) {
+    public static MethodArgumentNotValidExceptionData badRequest(MethodArgumentNotValidException methodArgumentNotValidException, HttpServletRequest request) {
         String field = getField(methodArgumentNotValidException);
         String errorMessage = getDefaultMessage(methodArgumentNotValidException);
         String path = getPath(request);
 
-        return new MethodArgumentNotValidExceptionDTO(
+        return new MethodArgumentNotValidExceptionData(
                 field, errorMessage, ErrorStatusCode.BAD_REQUEST_400, path);
     }
 

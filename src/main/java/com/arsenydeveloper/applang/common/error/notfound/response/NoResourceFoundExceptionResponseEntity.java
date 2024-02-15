@@ -1,17 +1,17 @@
 package com.arsenydeveloper.applang.common.error.notfound.response;
 
-import com.arsenydeveloper.applang.common.error.notfound.dto.NoResourceFoundExceptionDTO;
+import com.arsenydeveloper.applang.common.error.notfound.data.NoResourceFoundExceptionData;
 import com.arsenydeveloper.applang.common.error.util.ErrorStatusCode;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 public class NoResourceFoundExceptionResponseEntity {
 
-    public static NoResourceFoundExceptionDTO notFound(NoResourceFoundException noResourceFoundException, HttpServletRequest request) {
+    public static NoResourceFoundExceptionData notFound(NoResourceFoundException noResourceFoundException, HttpServletRequest request) {
         String message = getMessage(noResourceFoundException);
         String path = getPath(request);
 
-        return new NoResourceFoundExceptionDTO(message, ErrorStatusCode.NOT_FOUND_404, path);
+        return new NoResourceFoundExceptionData(message, ErrorStatusCode.NOT_FOUND_404, path);
     }
 
     private static String getMessage(NoResourceFoundException noResourceFoundException) {
