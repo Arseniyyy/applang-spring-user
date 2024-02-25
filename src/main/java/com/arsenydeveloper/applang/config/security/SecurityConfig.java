@@ -1,7 +1,6 @@
 package com.arsenydeveloper.applang.config.security;
 
 import com.arsenydeveloper.applang.config.security.handler.CustomAccessDeniedHandler;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,6 +20,7 @@ import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import java.util.List;
 
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @Configuration
@@ -28,12 +28,6 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @EnableWebSecurity
 @PropertySource("classpath:application.properties")
 public class SecurityConfig {
-
-    @Value("${okta.oauth2.issuer}")
-    private String issuer;
-
-    @Value("${okta.oauth2.audience}")
-    private String audience;
 
     @Bean
     public AccessDeniedHandler accessDeniedHandler() {
@@ -60,8 +54,9 @@ public class SecurityConfig {
             .csrf(AbstractHttpConfigurer::disable)
             .sessionManagement(sessionManagementCustomizer -> sessionManagementCustomizer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(authorize -> authorize
-                    .requestMatchers(HttpMethod.POST, "/api/v1/u").permitAll()
                     .requestMatchers(HttpMethod.GET, "/api/v1/u").authenticated()
+                    .requestMatchers(HttpMethod.GET, "/api/v1/u/**").authenticated()
+                    .requestMatchers(HttpMethod.POST, "/api/v1/u").permitAll()
                     .requestMatchers(HttpMethod.PATCH, "/api/v1/u/**").authenticated()
                     .requestMatchers(HttpMethod.DELETE, "/api/v1/u/**").authenticated()
                     .requestMatchers("/api/v1/scope").hasAuthority("SCOPE_read:users")
