@@ -69,7 +69,7 @@ public class URestController {
         value = "${info.api.u-url}",
         produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public ResponseEntity<List<UPresentationV1>> getAll() {
+    public ResponseEntity<List<UPresentationV1>> getAllU() {
         List<UData> uDataList = this.findAllApi.findAll();
         List<UPresentationV1> uPresentationV1List = this.utils.convertToListUPresentationV1FromUDataList(uDataList);
 

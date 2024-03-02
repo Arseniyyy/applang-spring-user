@@ -17,6 +17,9 @@ public class UData {
     private boolean enabled;
     private String verificationCode;
 
+    public UData() {
+    }
+
     @Override
     public String toString() {
         return email;

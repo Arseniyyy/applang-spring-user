@@ -1,5 +1,8 @@
 package com.arsenydeveloper.applang.domain.model;
 
+import com.arsenydeveloper.applang.domain.model.enumerable.nativelanguage.NativeLanguageEnum;
+import com.arsenydeveloper.applang.domain.model.enumerable.registrationmethod.RegistrationMethodEnum;
+import com.arsenydeveloper.applang.domain.model.enumerable.subscriptiontype.SubscriptionTypeEnum;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
@@ -49,17 +52,14 @@ public class U {
     @Transient
     private Integer age;
 
-    @NotEmpty
     @Column(name = "native_language")
-    private String nativeLanguage;
+    private NativeLanguageEnum nativeLanguage;
 
-    @NotEmpty
     @Column(name = "subscription")
-    private String subscription;
+    private SubscriptionTypeEnum subscription;
 
-    @NotEmpty
     @Column(name = "registrationMethod")
-    private String registrationMethod;
+    private RegistrationMethodEnum registrationMethod;
 
     @Column(name = "enabled")
     private boolean enabled;
@@ -131,27 +131,27 @@ public class U {
         this.age = age;
     }
 
-    public String getNativeLanguage() {
+    public NativeLanguageEnum getNativeLanguage() {
         return nativeLanguage;
     }
 
-    public void setNativeLanguage(String nativeLanguage) {
+    public void setNativeLanguage(NativeLanguageEnum nativeLanguage) {
         this.nativeLanguage = nativeLanguage;
     }
 
-    public String getSubscription() {
+    public SubscriptionTypeEnum getSubscription() {
         return subscription;
     }
 
-    public void setSubscription(String subscription) {
+    public void setSubscription(SubscriptionTypeEnum subscription) {
         this.subscription = subscription;
     }
 
-    public String getRegistrationMethod() {
+    public RegistrationMethodEnum getRegistrationMethod() {
         return registrationMethod;
     }
 
-    public void setRegistrationMethod(String registrationMethod) {
+    public void setRegistrationMethod(RegistrationMethodEnum registrationMethod) {
         this.registrationMethod = registrationMethod;
     }
 
