@@ -5,6 +5,8 @@ import java.util.UUID;
 
 /**
  * UPresentationV1
+ * @author Arseniy Koshelnik
+ * @since 0.0.1
  */
 public class UPresentationV1 {
 

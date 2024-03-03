@@ -3,6 +3,12 @@ package com.arsenydeveloper.applang.application.data;
 import java.time.LocalDate;
 import java.util.UUID;
 
+/**
+ * UData
+ * @author Arseniy Koshelnik
+ * @since 0.0.1
+ */
+
 public class UData {
 
     private UUID id;

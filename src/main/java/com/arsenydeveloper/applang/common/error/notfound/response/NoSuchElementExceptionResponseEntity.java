@@ -5,6 +5,11 @@ import com.arsenydeveloper.applang.common.error.util.ErrorStatusCode;
 import jakarta.servlet.http.HttpServletRequest;
 import java.util.NoSuchElementException;
 
+/**
+ * NoSuchElementExceptionResponseEntity
+ * @author Arseniy Koshelnik
+ * @since 0.0.1
+ */
 public class NoSuchElementExceptionResponseEntity {
 
     public static NoSuchElementExceptionData notFound(NoSuchElementException noSuchElementException, HttpServletRequest request) {

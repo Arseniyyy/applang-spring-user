@@ -7,6 +7,8 @@ import java.util.UUID;
 
 /**
  * UpdateByIdApi
+ * @author Arseniy Koshelnik
+ * @since 0.0.1
  */
 @FunctionalInterface
 public interface UpdateByIdApi {

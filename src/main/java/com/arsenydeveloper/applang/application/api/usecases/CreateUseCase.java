@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * CreateUseCase
+ * @author Arseniy Koshelnik
+ * @since 0.0.1
  */
 public class CreateUseCase implements CreateApi {
 

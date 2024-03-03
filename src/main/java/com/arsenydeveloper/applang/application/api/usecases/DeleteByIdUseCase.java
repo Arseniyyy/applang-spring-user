@@ -7,6 +7,8 @@ import java.util.UUID;
 
 /**
  * DeleteByIdUseCase
+ * @author Arseniy Koshelnik
+ * @since 0.0.1
  */
 public class DeleteByIdUseCase implements DeleteByIdApi {
 

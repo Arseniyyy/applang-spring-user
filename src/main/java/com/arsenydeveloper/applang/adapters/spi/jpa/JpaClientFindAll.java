@@ -11,6 +11,8 @@ import java.util.List;
 
 /**
  * JpaClientFindAll
+ * @author Arseniy Koshelnik
+ * @since 0.0.1
  */
 @Service
 public class JpaClientFindAll implements FindAllSpi {

@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.UUID;
 
 /**
- * FindByIdUseCase, {@code FindByIdApi} is the left-side port.
+ * FindByIdUseCase
+ * @author Arseniy Koshelnik
+ * @since 0.0.1
  */
 public class FindByIdUseCase implements FindByIdApi {
 

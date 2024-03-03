@@ -1,7 +1,7 @@
 package com.arsenydeveloper.applang.common.error.validation.data;
 
 /**
- * Common model for responding with error messages
+ * MethodArgumentNotValidExceptionData. Common model for responding with error messages
  * @author Arseniy Koshelnik
  * @since 0.0.1
  */

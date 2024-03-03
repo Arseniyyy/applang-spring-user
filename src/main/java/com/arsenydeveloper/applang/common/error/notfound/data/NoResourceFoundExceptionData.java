@@ -1,5 +1,11 @@
 package com.arsenydeveloper.applang.common.error.notfound.data;
 
+/**
+ * NoResourceFoundExceptionData
+ * @author Arseniy Koshelnik
+ * @since 0.0.1
+ */
+
 public class NoResourceFoundExceptionData {
 
     private String message;

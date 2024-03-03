@@ -6,6 +6,8 @@ import java.util.Map;
 
 /**
  * UpdateByIdSpi
+ * @author Arseniy Koshelnik
+ * @since 0.0.1
  */
 @FunctionalInterface
 public interface UpdateByIdSpi {

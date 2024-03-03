@@ -1,5 +1,11 @@
 package com.arsenydeveloper.applang.common.error.notfound.data;
 
+/**
+ * NoSuchElementExceptionData
+ * @author Arseniy Koshelnik
+ * @since 0.0.1
+ */
+
 public class NoSuchElementExceptionData {
     private String message;
     private int statusCode;

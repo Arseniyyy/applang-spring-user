@@ -15,6 +15,11 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.HashMap;
 
+/**
+ * CustomAccessDeniedHandler
+ * @author Arseniy Koshelnik
+ * @since 0.0.1
+ */
 public class CustomAccessDeniedHandler implements AccessDeniedHandler, AuthenticationEntryPoint {
 
     @Override

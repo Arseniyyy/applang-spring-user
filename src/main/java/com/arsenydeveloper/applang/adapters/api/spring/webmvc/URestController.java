@@ -26,7 +26,9 @@ import java.util.Map;
 import java.util.List;
 
 /**
- * FindByIdRestController is an API adapter.
+ * URestController is an API adapter.
+ * @author Arseniy Koshelnik
+ * @since 0.0.1
  */
 @RestController
 public class URestController {

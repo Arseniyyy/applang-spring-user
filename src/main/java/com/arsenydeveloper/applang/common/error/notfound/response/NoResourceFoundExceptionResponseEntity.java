@@ -5,6 +5,12 @@ import com.arsenydeveloper.applang.common.error.util.ErrorStatusCode;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
+/**
+ * NoResourceFoundExceptionResponseEntity
+ * @author Arseniy Koshelnik
+ * @since 0.0.1
+ */
+
 public class NoResourceFoundExceptionResponseEntity {
 
     public static NoResourceFoundExceptionData notFound(NoResourceFoundException noResourceFoundException, HttpServletRequest request) {

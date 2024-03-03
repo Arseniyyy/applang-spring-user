@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 /**
  * JpaClientCreate
+ * @author Arseniy Koshelnik
+ * @since 0.0.1
  */
 @Service
 public class JpaClientCreate implements CreateSpi {

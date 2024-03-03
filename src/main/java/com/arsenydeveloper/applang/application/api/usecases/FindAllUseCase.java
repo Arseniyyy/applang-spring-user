@@ -8,6 +8,8 @@ import java.util.List;
 
 /**
  * FindAllUseCase
+ * @author Arseniy Koshelnik
+ * @since 0.0.1
  */
 public class FindAllUseCase implements FindAllApi {
 

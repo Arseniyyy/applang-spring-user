@@ -5,6 +5,8 @@ import java.util.List;
 
 /**
  * FindAllApi
+ * @author Arseniy Koshelnik
+ * @since 0.0.1
  */
 @FunctionalInterface
 public interface FindAllApi {

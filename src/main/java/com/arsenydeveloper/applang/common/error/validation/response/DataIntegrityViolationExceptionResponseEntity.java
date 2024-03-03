@@ -5,7 +5,11 @@ import com.arsenydeveloper.applang.common.error.validation.data.DataIntegrityVio
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.dao.DataIntegrityViolationException;
 
-
+/**
+ * DataIntegrityViolationExceptionResponseEntity
+ * @author Arseniy Koshelnik
+ * @since 0.0.1
+ */
 public class DataIntegrityViolationExceptionResponseEntity {
 
     public static DataIntegrityViolationExceptionData badRequest(

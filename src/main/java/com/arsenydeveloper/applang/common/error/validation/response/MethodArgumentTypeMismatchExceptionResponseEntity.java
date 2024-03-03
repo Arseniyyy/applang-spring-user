@@ -5,6 +5,12 @@ import com.arsenydeveloper.applang.common.error.validation.data.MethodArgumentTy
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
+/**
+ * MethodArgumentTypeMismatchExceptionResponseEntity
+ * @author Arseniy Koshelnik
+ * @since 0.0.1
+ */
+
 public class MethodArgumentTypeMismatchExceptionResponseEntity {
 
     /**

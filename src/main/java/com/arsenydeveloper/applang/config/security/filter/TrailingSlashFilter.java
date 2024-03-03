@@ -12,6 +12,11 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+/**
+ * TrailingSlashFilter
+ * @author Arseniy Koshelnik
+ * @since 0.0.1
+ */
 @Component
 @Order(1)
 public class TrailingSlashFilter extends OncePerRequestFilter {

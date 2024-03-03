@@ -9,6 +9,8 @@ import java.util.UUID;
 
 /**
  * UpdateByIdUseCase
+ * @author Arseniy Koshelnik
+ * @since 0.0.1
  */
 public class UpdateByIdUseCase implements UpdateByIdApi {
 
@@ -21,6 +23,6 @@ public class UpdateByIdUseCase implements UpdateByIdApi {
 
     @Override
     public UData update(UUID id, Map<String, Object> fields) {
-        return this.updateByIdSpi.update(id, fields);
+        return updateByIdSpi.update(id, fields);
     }
 }

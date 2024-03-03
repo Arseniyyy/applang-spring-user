@@ -9,6 +9,8 @@ import java.util.UUID;
 
 /**
  * JpaClientDeleteById
+ * @author Arseniy Koshelnik
+ * @since 0.0.1
  */
 @Service
 public class JpaClientDeleteById implements DeleteByIdSpi {

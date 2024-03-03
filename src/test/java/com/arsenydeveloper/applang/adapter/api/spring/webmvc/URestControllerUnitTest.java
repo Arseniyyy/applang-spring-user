@@ -31,30 +31,32 @@ import static org.mockito.Mockito.when;
 
 /**
  * URestControllerUnitTest
+ * @author Arseniy Koshelnik
+ * @since 0.0.1
  */
 @ExtendWith(MockitoExtension.class)
 class URestControllerUnitTest {
 
-    private UUID uuid = UUID.randomUUID();
-    private Map<String, Object> fields = new HashMap<>();
+    private final UUID uuid = UUID.randomUUID();
+    private final Map<String, Object> fields = new HashMap<>();
 
     @Mock
-    FindAllApi findAllApi;
+    private FindAllApi findAllApi;
 
     @Mock
-    FindByIdApi findByIdApi;
+    private FindByIdApi findByIdApi;
 
     @Mock
-    CreateApi createApi;
+    private CreateApi createApi;
 
     @Mock
-    UpdateByIdApi updateByIdApi;
+    private UpdateByIdApi updateByIdApi;
 
     @Mock
-    DeleteByIdApi deleteByIdApi;
+    private DeleteByIdApi deleteByIdApi;
 
     @Mock
-    UUtils utils;
+    private UUtils utils;
 
     @InjectMocks
     URestController controller;

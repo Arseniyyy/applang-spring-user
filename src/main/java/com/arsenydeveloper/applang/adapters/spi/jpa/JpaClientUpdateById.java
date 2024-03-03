@@ -14,6 +14,8 @@ import java.util.UUID;
 
 /**
  * JpaClientUpdateById
+ * @author Arseniy Koshelnik
+ * @since 0.0.1
  */
 @Service
 public class JpaClientUpdateById implements UpdateByIdSpi {

@@ -15,6 +15,11 @@ import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * AppConfiguration
+ * @author Arseniy Koshelnik
+ * @since 0.0.1
+ */
 @Configuration
 public class AppConfiguration {
 

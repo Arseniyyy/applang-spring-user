@@ -1,5 +1,10 @@
 package com.arsenydeveloper.applang.common.error.validation.data;
 
+/**
+ * MethodArgumentTypeMismatchExceptionData
+ * @author Arseniy Koshelnik
+ * @since 0.0.1
+ */
 public class MethodArgumentTypeMismatchExceptionData {
 
     private String value;

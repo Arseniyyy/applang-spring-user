@@ -11,6 +11,8 @@ import java.util.UUID;
 
 /**
  * JpaClientFindById
+ * @author Arseniy Koshelnik
+ * @since 0.0.1
  */
 @Service
 public class JpaClientFindById implements FindByIdSpi {
