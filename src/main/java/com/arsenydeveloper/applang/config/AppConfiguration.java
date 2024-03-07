@@ -11,9 +11,13 @@ import com.arsenydeveloper.applang.application.api.usecases.FindAllUseCase;
 import com.arsenydeveloper.applang.application.api.usecases.FindByIdUseCase;
 import com.arsenydeveloper.applang.application.api.usecases.UpdateByIdUseCase;
 import com.arsenydeveloper.applang.infrastructure.utils.uutils.UUtils;
+import com.zaxxer.hikari.HikariDataSource;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 
 /**
  * AppConfiguration
@@ -21,7 +25,23 @@ import org.springframework.context.annotation.Configuration;
  * @since 0.0.1
  */
 @Configuration
+@PropertySource("classpath:datasource.properties")
 public class AppConfiguration {
+
+    @Autowired
+    private Environment env;
+
+    @Bean
+    public HikariDataSource dataSource() {
+        HikariDataSource dataSource = new HikariDataSource();
+        dataSource.setDriverClassName("org.postgresql.Driver");
+        dataSource.setJdbcUrl(env.getProperty("spring.datasource.url"));
+        dataSource.setUsername(env.getProperty("spring.datasource.username"));
+        dataSource.setPassword(env.getProperty("spring.datasource.password"));
+        dataSource.setMaximumPoolSize(Integer.valueOf(env.getProperty("spring.datasource.hikari.maximum-pool-size")));
+
+        return dataSource;
+    }
 
     @Bean
     public ModelMapper modelMapper() {

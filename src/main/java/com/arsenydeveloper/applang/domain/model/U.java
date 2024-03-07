@@ -52,20 +52,20 @@ public class U {
     @Transient
     private Integer age;
 
-    @Column(name = "native_language")
+    @Column(name = "native_language", columnDefinition = "smallint")
     private NativeLanguageEnum nativeLanguage;
 
-    @Column(name = "subscription")
+    @Column(name = "subscription", columnDefinition = "smallint")
     private SubscriptionTypeEnum subscription;
 
-    @Column(name = "registrationMethod")
+    @Column(name = "registration_method", columnDefinition = "smallint")
     private RegistrationMethodEnum registrationMethod;
 
     @Column(name = "enabled")
     private boolean enabled;
 
     @NotEmpty
-    @Column(name = "verificationCode", length = 6)
+    @Column(name = "verification_code", length = 6)
     private String verificationCode;
 
     public U() {

@@ -37,26 +37,26 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 class URestControllerUnitTest {
 
-    private final UUID uuid = UUID.randomUUID();
-    private final Map<String, Object> fields = new HashMap<>();
+    final UUID uuid = UUID.randomUUID();
+    final Map<String, Object> fields = new HashMap<>();
 
     @Mock
-    private FindAllApi findAllApi;
+    FindAllApi findAllApi;
 
     @Mock
-    private FindByIdApi findByIdApi;
+    FindByIdApi findByIdApi;
 
     @Mock
-    private CreateApi createApi;
+    CreateApi createApi;
 
     @Mock
-    private UpdateByIdApi updateByIdApi;
+    UpdateByIdApi updateByIdApi;
 
     @Mock
-    private DeleteByIdApi deleteByIdApi;
+    DeleteByIdApi deleteByIdApi;
 
     @Mock
-    private UUtils utils;
+    UUtils utils;
 
     @InjectMocks
     URestController controller;
