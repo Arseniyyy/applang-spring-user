@@ -52,13 +52,13 @@ public class U {
     @Transient
     private Integer age;
 
-    @Column(name = "native_language", columnDefinition = "smallint")
+    @Column(name = "native_language")
     private NativeLanguageEnum nativeLanguage;
 
-    @Column(name = "subscription", columnDefinition = "smallint")
+    @Column(name = "subscription")
     private SubscriptionTypeEnum subscription;
 
-    @Column(name = "registration_method", columnDefinition = "smallint")
+    @Column(name = "registration_method")
     private RegistrationMethodEnum registrationMethod;
 
     @Column(name = "enabled")

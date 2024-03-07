@@ -11,8 +11,6 @@ CREATE TABLE public.u (
   verification_code character varying(6)
 );
 
-CREATE INDEX u_pkey ON public.u(id);
-
 CREATE UNIQUE INDEX uk_dmksigv42l1wl836trnrx836w ON public.u(email);
 
 CREATE UNIQUE INDEX uk_pyt7bcsbb6efouobo0j6rebnw ON public.u(nickname);

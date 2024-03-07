@@ -62,7 +62,7 @@ public class URepositoryIntegrationTest {
     }
 
     @Test
-    void findAll_WhenAtLeastOneUExists_ReturnsListOfU() {
+    void findAll_WhenAtLeastOneUExists_ReturnsValidListOfU() {
         createU();
         List<U> us = repository.findAll();
 

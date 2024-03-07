@@ -3,6 +3,10 @@ package com.arsenydeveloper.applang.application.data;
 import java.time.LocalDate;
 import java.util.UUID;
 
+import com.arsenydeveloper.applang.domain.model.enumerable.nativelanguage.NativeLanguageEnum;
+import com.arsenydeveloper.applang.domain.model.enumerable.registrationmethod.RegistrationMethodEnum;
+import com.arsenydeveloper.applang.domain.model.enumerable.subscriptiontype.SubscriptionTypeEnum;
+
 /**
  * UData
  * @author Arseniy Koshelnik
@@ -17,9 +21,9 @@ public class UData {
     private String password;
     private LocalDate dateOfBirth;
     private Integer age;
-    private String nativeLanguage;
-    private String subscription;
-    private String registrationMethod;
+    private NativeLanguageEnum nativeLanguage;
+    private SubscriptionTypeEnum subscription;
+    private RegistrationMethodEnum registrationMethod;
     private boolean enabled;
     private String verificationCode;
 
@@ -71,27 +75,27 @@ public class UData {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getNativeLanguage() {
+    public NativeLanguageEnum getNativeLanguage() {
         return nativeLanguage;
     }
 
-    public void setNativeLanguage(String nativeLanguage) {
+    public void setNativeLanguage(NativeLanguageEnum nativeLanguage) {
         this.nativeLanguage = nativeLanguage;
     }
 
-    public String getSubscription() {
+    public SubscriptionTypeEnum getSubscription() {
         return subscription;
     }
 
-    public void setSubscription(String subscription) {
+    public void setSubscription(SubscriptionTypeEnum subscription) {
         this.subscription = subscription;
     }
 
-    public String getRegistrationMethod() {
+    public RegistrationMethodEnum getRegistrationMethod() {
         return registrationMethod;
     }
 
-    public void setRegistrationMethod(String registrationMethod) {
+    public void setRegistrationMethod(RegistrationMethodEnum registrationMethod) {
         this.registrationMethod = registrationMethod;
     }
 
