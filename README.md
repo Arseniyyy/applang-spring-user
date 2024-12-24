@@ -7,3 +7,8 @@
 ```
 mvn clean test
 ```
+
+## Запуск
+```
+mvn spring-boot:run
+```
